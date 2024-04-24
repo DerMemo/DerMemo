@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --main-brand-color: #297AE3;
+    --primary-color: #15171C;
+    --secondary-color: #232933;
+    --light-secondary-color: #2e3744;
+    --text-color: white;
+    --secondary-text-color: #b3b4b6;
+}
+
+header {
+    min-height: 100vh;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.header-text {
+    width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.circle {
+    height: 400px;
+    width: 400px;
+    margin-top: 70px;
+    margin-right: 50px;
+    max-height: 80vw;
+    max-width: 80vw;
+    overflow: hidden; /* bild wird abgeschnitten */
+    border-radius: 50%;
+    border: 20px solid var(--main-brand-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle img {
+    width: 100%;
+    
+}
+
+nav {
+    position: sticky;
+    top: 0; /* Stick to the top of the viewport */
+    background-color: var(--primary-color); /* Ensure the background color is solid */
+    z-index: 1000; /* Higher index to ensure it stays on top of other content */
+    width: 100%; /* Full width */
+    padding-top: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav li {
+    padding: 10px;
+}
+
+nav a {
+    color: var(--secondary-text-color);
+    text-decoration: none;
+    position: relative;
+    padding: 3px;
+    transition: color 0.3s;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--main-brand-color);
+    transition: width 0.3s ease-in-out;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    color: var(--text-color);
+}
+
+#menu-toggle {
+    display: none; /* Hide the toggle button on larger screens */
+}
+
+@media (max-width: 800px) {
+    nav ul {
+        display: none; /* Hide the menu by default on small screens */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: var(--primary-color);
+        border-top: 3px solid var(--main-brand-color);
+    }
+
+    #menu-toggle {
+        display: block; /* Show the toggle button on small screens */
+    }
+
+    #menu-toggle:checked + nav ul {
+        display: flex; /* Show the menu when the toggle is active */
+    }
+}

@@ -1,0 +1,38 @@
+.site-footer {
+    background-color: var(--secondary-color); 
+    color: #fff; 
+    padding: 20px 0; 
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 20px; 
+}
+
+.site-footer a {
+    color: var(--main-brand-color); 
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.site-footer p:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--main-brand-color);
+}
+
+.social-media-links {
+    margin-top: 10px; 
+}
+.social-media-links img {
+    width: 40px;
+    height: auto;
+}
+
+.social-media-links a:hover,
+.social-media-links img:hover {
+    opacity: 0.8; 
+    transform: scale(1.1); 
+    transition: transform 0.3s, opacity 0.3s; 
+}
