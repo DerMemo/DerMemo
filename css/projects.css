@@ -1,0 +1,109 @@
+#github-projects {
+  background-color: var(--light-secondary-color);
+}
+#github-projects .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px;
+}
+
+#projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.project-card {
+  position: relative;
+  min-width: 200px;
+  background: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3 ease, box-shadow 0.3 ease;
+  border: 1px solid var(--light-secondary-color);
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.container h2 {
+  margin-bottom: 20px;
+}
+.project-card h3 {
+  color: var(--text-color);
+  padding: 15px;
+  margin-top: 0;
+  background-color: rgba(27, 71, 246, 0.766);
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.project-card p {
+  padding: 15px;
+  margin: 0;
+  color: var(--secondary-text-color);
+}
+
+.project-card a {
+  display: block;
+  text-align: center;
+  padding: 10px 15px;
+  color: #fff;
+  background-color: var(--main-brand-color);
+  text-decoration: none;
+  border-radius: 0 0 10px 10px;
+}
+
+.project-card a:hover {
+  background-color: blue;
+}
+
+.language-overlay {
+  position: absolute;
+  top: 100%;
+  bottom: 0; /* Startposition unterhalb der Karte */
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Dunkles Overlay für guten Kontrast */
+  color: white;
+  transition: bottom 0.3s ease; /* Animiert die Position nach 'bottom' */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.project-card:hover .language-overlay {
+  opacity: 1;
+  visibility: visible;
+  bottom: 0;
+}
+
+.language-overlay ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.language-overlay li {
+  margin: 5px 0;
+}
+
+@media (max-width: 600px) {
+  #projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    justify-content: center;
+  }
+  .language-overlay {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
