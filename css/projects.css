@@ -1,6 +1,7 @@
 #github-projects {
   background-color: var(--light-secondary-color);
 }
+
 #github-projects .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -24,8 +25,11 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3 ease, box-shadow 0.3 ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid var(--light-secondary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .project-card:hover {
@@ -36,18 +40,21 @@
 .container h2 {
   margin-bottom: 20px;
 }
+
 .project-card h3 {
   color: var(--text-color);
   padding: 15px;
-  margin-top: 0;
+  margin: 0;
   background-color: rgba(27, 71, 246, 0.766);
   border-bottom: 1px solid var(--primary-color);
+  flex-shrink: 0;
 }
 
 .project-card p {
   padding: 15px;
   margin: 0;
   color: var(--secondary-text-color);
+  flex-grow: 1;
 }
 
 .project-card a {
@@ -58,32 +65,39 @@
   background-color: var(--main-brand-color);
   text-decoration: none;
   border-radius: 0 0 10px 10px;
+  flex-shrink: 0;
 }
 
 .project-card a:hover {
   background-color: blue;
 }
 
-.language-overlay {
-  position: absolute;
-  top: 100%;
-  bottom: 0; /* Startposition unterhalb der Karte */
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.8); /* Dunkles Overlay für guten Kontrast */
-  color: white;
-  transition: bottom 0.3s ease; /* Animiert die Position nach 'bottom' */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
 }
 
-.project-card:hover .language-overlay {
-  opacity: 1;
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position above the element */
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
   visibility: visible;
-  bottom: 0;
+  opacity: 1;
 }
 
 .language-overlay ul {
@@ -95,15 +109,5 @@
 
 .language-overlay li {
   margin: 5px 0;
-}
-
-@media (max-width: 600px) {
-  #projects-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    justify-content: center;
-  }
-  .language-overlay {
-    padding: 5px;
-    font-size: 12px;
-  }
+  color: white;
 }

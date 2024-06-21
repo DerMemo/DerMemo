@@ -90,46 +90,69 @@ const sendEmail = (e) => {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("https://api.github.com/users/DerMemo/repos")
-    .then((response) => response.json())
-    .then((data) => {
-      const projectsGrid = document.getElementById("projects-grid");
-      data.forEach((repo) => {
-        const projectCard = document.createElement("div");
-        projectCard.className = "project-card";
-        projectCard.innerHTML = `
-                <h3>${repo.name}</h3>
-                <p>${repo.description || "Keine Beschreibung verfügbar"}</p>
-                <a href="${repo.html_url}" target="_blank">Mehr sehen</a>
-                <div class="language-overlay">
-                    <ul id="languages-${repo.name}"></ul>
-                    </div>
-            `;
-        projectsGrid.appendChild(projectCard);
-        fetchLanguages(repo.languages_url, repo.name);
-      });
-    })
-    .catch((error) =>
-      console.error("Fehler beim Laden der GitHub Repos:", error)
-    );
-});
+  console.log("JavaScript Loaded");
 
-function fetchLanguages(url, repoName) {
-  fetch(url)
-    .then((response) => {
-      console.log(response);
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      const languageList = document.getElementById(`languages-${repoName}`);
-      Object.keys(data).forEach((lang) => {
+  // Mock data to simulate API response
+  const mockData = [
+    {
+      name: "DerMemo",
+      description: "Portfolio",
+      html_url: "https://github.com/DerMemo",
+      languages_url: "mock_url_DerMemo",
+    },
+    {
+      name: "Snake",
+      description: "Snake Game",
+      html_url: "https://github.com/DerMemo/Snake",
+      languages_url: "mock_url_Snake",
+    },
+    {
+      name: "TabuGame",
+      description: "Tabu Game",
+      html_url: "https://github.com/DerMemo/TabuGame",
+      languages_url: "mock_url_TabuGame",
+    },
+  ];
+
+  const mockLanguages = {
+    mock_url_DerMemo: { CSS: 10081, HTML: 8783, JavaScript: 4360 },
+    mock_url_Snake: { CSS: 3275, HTML: 1422, JavaScript: 7837 },
+    mock_url_TabuGame: { CSS: 1589, HTML: 2385, JavaScript: 7042 },
+  };
+
+  const projectsGrid = document.getElementById("projects-grid");
+  mockData.forEach((repo) => {
+    const projectCard = document.createElement("div");
+    projectCard.className = "project-card";
+    projectCard.innerHTML = `
+      <h3>${repo.name}</h3>
+      <p>${repo.description || "Keine Beschreibung verfügbar"}</p>
+      <a href="${repo.html_url}" target="_blank">Mehr sehen</a>
+      <div class="tooltip">
+        <span class="tooltiptext">
+          <ul id="languages-${repo.name}"></ul>
+        </span>
+        &#x1F6C8; <!-- Info icon -->
+      </div>
+    `;
+    projectsGrid.appendChild(projectCard);
+
+    // Fetch languages from mock data
+    const languages = mockLanguages[repo.languages_url];
+    const languageList = document.getElementById(`languages-${repo.name}`);
+    languageList.innerHTML = ""; // Clear previous content if any
+    if (languages && Object.keys(languages).length > 0) {
+      Object.keys(languages).forEach((lang) => {
         const listItem = document.createElement("li");
-        listItem.textContent = `${lang}: ${data[lang]}`;
+        listItem.textContent = `${lang}: ${languages[lang]}`;
         languageList.appendChild(listItem);
       });
-    })
-    .catch((error) => console.error("Fehler beim Laden der Sprachen:", error));
-}
+    } else {
+      const listItem = document.createElement("li");
+      listItem.textContent = "No languages available";
+      languageList.appendChild(listItem);
+    }
+  });
+});
 
 contactForm.addEventListener("submit", sendEmail);

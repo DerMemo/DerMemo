@@ -1,42 +1,101 @@
 #about-me {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    padding: 50px 20px;
-    transition: background-color 0.5s ease;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  padding: 50px 20px;
+  transition: background-color 0.5s ease;
 }
 
 #about-me .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background: var(--light-secondary-color);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: var(--light-secondary-color);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 #about-me h2 {
-    text-align: center;
-    font-size: 2.5rem;
+  text-align: center;
+  font-size: 2.5rem;
+}
+#about-me {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  padding: 50px 20px;
+  transition: background-color 0.5s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+#about-me:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+#about-me .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: var(--light-secondary-color);
+  border-radius: 10px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+#about-me h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--main-brand-color);
 }
 
 #about-me p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
 }
 
 #about-me .details {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 #about-me:hover .details {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 #about-me:hover .container {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+#about-me p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+#about-me .details {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#about-me:hover .details {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#about-me:hover .container {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
