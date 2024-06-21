@@ -97,19 +97,22 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       name: "DerMemo",
       description: "Portfolio",
-      html_url: "https://github.com/DerMemo",
+      html_url: "https://dermemo.github.io/DerMemo/",
+      repo_url: "https://github.com/DerMemo/DerMemo",
       languages_url: "mock_url_DerMemo",
     },
     {
       name: "Snake",
       description: "Snake Game",
-      html_url: "https://github.com/DerMemo/Snake",
+      html_url: "https://dermemo.github.io/Snake/",
+      repo_url: "https://github.com/DerMemo/Snake",
       languages_url: "mock_url_Snake",
     },
     {
       name: "TabuGame",
       description: "Tabu Game",
-      html_url: "https://github.com/DerMemo/TabuGame",
+      html_url: "https://dermemo.github.io/TabuGame/",
+      repo_url: "https://github.com/DerMemo/TabuGame",
       languages_url: "mock_url_TabuGame",
     },
   ];
@@ -127,7 +130,14 @@ document.addEventListener("DOMContentLoaded", function () {
     projectCard.innerHTML = `
       <h3>${repo.name}</h3>
       <p>${repo.description || "Keine Beschreibung verfügbar"}</p>
-      <a href="${repo.html_url}" target="_blank">Mehr sehen</a>
+      <a href="${repo.repo_url}" target="_blank">Git</a>
+      ${
+        repo.name === "Snake"
+          ? `<a href="${repo.html_url}" target="_blank" class="play-button">Play Now</a>`
+          : repo.name === "TabuGame"
+          ? `<a href="${repo.html_url}" target="_blank" class="play-button">Play Now</a>`
+          : `<a href="${repo.html_url}" target="_blank" class="visit-button">Visit Site</a>`
+      }
       <div class="tooltip">
         <span class="tooltiptext">
           <ul id="languages-${repo.name}"></ul>

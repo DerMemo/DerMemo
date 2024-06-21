@@ -111,3 +111,33 @@
   margin: 5px 0;
   color: white;
 }
+.play-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: var(--main-brand-color);
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+  text-align: center;
+}
+
+.play-button:hover {
+  background-color: #0056;
+  transform: scale(1.05);
+}
+
+.visit-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: var(--main-brand-color);
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+  text-align: center;
+}
